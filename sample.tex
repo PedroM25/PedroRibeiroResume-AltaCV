@@ -14,12 +14,12 @@
 %% Use the "normalphoto" option if you want a normal photo instead of cropped to a circle
 % \documentclass[10pt,a4paper,withhyper,normalphoto]{altacv}
 
-\documentclass[10pt,a4paper,withhyper]{altacv}
+\documentclass[9pt,a4paper,withhyper]{altacv}
 %% AltaCV uses the fontawesome5 and simpleicons packages.
 %% See http://texdoc.net/pkg/fontawesome5 and http://texdoc.net/pkg/simpleicons for full list of symbols.
 
 % Change the page layout if you need to
-\geometry{left=1.25cm,right=1.25cm,top=1.5cm,bottom=1.5cm,columnsep=1.2cm}
+\geometry{left=1.25cm,right=1.25cm,top=1.2cm,bottom=1.5cm,columnsep=0.7cm}
 
 % The paracol package lets you typeset columns of text in parallel
 \usepackage{paracol}
@@ -41,25 +41,39 @@
   \renewcommand{\familydefault}{\sfdefault}
 \fi
 
+% Custom colors
+\definecolor{DarkBlue}{HTML}{256490}
+\definecolor{LightBlue}{HTML}{4694b2}
+\definecolor{LeastGrey}{HTML}{adadad}
+\definecolor{NormalGrey}{HTML}{858585}
+\definecolor{MoreGrey}{HTML}{797979}
+\definecolor{MostGrey}{HTML}{636363}
+
 % Change the colours if you want to
 \definecolor{SlateGrey}{HTML}{2E2E2E}
 \definecolor{LightGrey}{HTML}{666666}
 \definecolor{DarkPastelRed}{HTML}{450808}
 \definecolor{PastelRed}{HTML}{8F0D0D}
 \definecolor{GoldenEarth}{HTML}{E7D192}
-\colorlet{name}{black}
-\colorlet{tagline}{PastelRed}
-\colorlet{heading}{DarkPastelRed}
-\colorlet{headingrule}{GoldenEarth}
-\colorlet{subheading}{PastelRed}
-\colorlet{accent}{PastelRed}
-\colorlet{emphasis}{SlateGrey}
-\colorlet{body}{LightGrey}
+
+\colorlet{name}{DarkBlue}
+\colorlet{tagline}{LightBlue}
+\colorlet{heading}{DarkBlue} % major titles
+\colorlet{headingrule}{LeastGrey}
+\colorlet{subheading}{PastelRed} % not in use
+\colorlet{accent}{LightBlue} % secondary titles
+\colorlet{emphasis}{SlateGrey} % not in use
+\colorlet{body}{MostGrey}
+
+% Custom color alias
+\colorlet{icons}{LeastGrey}
+\colorlet{sectionHeading}{MostGrey}
 
 % Change some fonts, if necessary
-\renewcommand{\namefont}{\Huge\rmfamily\bfseries}
-\renewcommand{\personalinfofont}{\footnotesize}
-\renewcommand{\cvsectionfont}{\LARGE\rmfamily\bfseries}
+\renewcommand{\namefont}{\Huge}
+\renewcommand{\taglinefont}{\large} % added by me
+\renewcommand{\personalinfofont}{\normalsize}
+\renewcommand{\cvsectionfont}{\large}
 \renewcommand{\cvsubsectionfont}{\large\bfseries}
 
 
@@ -144,6 +158,8 @@
 % Start a 2-column paracol. Both the left and right columns will automatically
 % break across pages if things get too long.
 \begin{paracol}{2}
+%% ORIGINAL document
+\iffalse
 \cvsection{Experience}
 
 \cvevent{Job Title 1}{Company 1}{Month 20XX -- Ongoing}{Location}
@@ -291,6 +307,7 @@ Thesis title: Wonderful Research
 \cvref{Prof.\ Gamma Delta}{Institute}{g.delta@university.edu}
 {Address Line 1\\Address Line 2}
 
+\fi
 
 \end{paracol}
 
