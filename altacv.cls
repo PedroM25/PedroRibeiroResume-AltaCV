@@ -130,6 +130,7 @@
 \RequirePackage{dashrule}
 \RequirePackage{multirow,tabularx}
 \RequirePackage{changepage}
+\RequirePackage{fix-cm}
 
 \setlength{\parindent}{0pt}
 \newcommand{\divider}{\textcolor{body!30}{\hdashrule{\linewidth}{0.6pt}{0.5ex}}\medskip}
@@ -344,17 +345,17 @@
 % Pedro Ribeiro addition
 \newcommand{\cvCustomEvent}[4]{%
   {\large\color{heading}#1\par}
-  \smallskip\normalsize
+  \smallskip\SemiLarge
   \ifstrequal{#2}{}{}{
   {\color{accent}#2}\par
   \smallskip}
   \ifstrequal{#3}{}{}{%
-    {\color{NormalGrey}\small\makebox[0.5\linewidth][l]%
+    {\color{NormalGrey}\SemiNormalSize\makebox[0.5\linewidth][l]%
       {\BeginAccSupp{method=pdfstringdef,ActualText={\datename:}}\cvDateMarker\EndAccSupp{}%
       ~#3}%
     }}%
   \ifstrequal{#4}{}{}{%
-    {\color{MoreGrey}\small\makebox[0.5\linewidth][l]%
+    {\color{MoreGrey}\SemiNormalSize\makebox[0.5\linewidth][l]%
       {\BeginAccSupp{method=pdfstringdef,ActualText={\locationname:}}\cvLocationMarker\EndAccSupp{}%
         ~#4}%
     }}\par
@@ -364,22 +365,22 @@
 % Pedro Ribeiro addition
 \newcommand{\cvExperienceEvent}[4]{%
   {\large\color{heading}#1\par}
-  \smallskip\normalsize
+  \smallskip\SemiLarge
   \ifstrequal{#2}{}{}{%
     {\makebox[0.45\linewidth][l]%
       {{\color{accent}#2}\par\smallskip}%
     }}%
   \ifstrequal{#3}{}{}{%
-    {\color{NormalGrey}\small\makebox[0.32\linewidth][l]%
+    {\color{NormalGrey}\SemiNormalSize\makebox[0.32\linewidth][l]%
       {\BeginAccSupp{method=pdfstringdef,ActualText={\datename:}}\cvDateMarker\EndAccSupp{}%
       ~#3}%
     }}%
   \ifstrequal{#4}{}{}{%
-    {\color{MoreGrey}\small\makebox[0.5\linewidth][l]%
+    {\color{MoreGrey}\SemiNormalSize\makebox[0.5\linewidth][l]%
       {\BeginAccSupp{method=pdfstringdef,ActualText={\locationname:}}\cvLocationMarker\EndAccSupp{}%
         ~#4}%
     }}\par
-  \medskip\normalsize
+  \smallskip\normalsize
 }
 
 % v1.7: adds accsupp for the icon as well

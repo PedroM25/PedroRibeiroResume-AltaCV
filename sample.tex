@@ -14,15 +14,28 @@
 %% Use the "normalphoto" option if you want a normal photo instead of cropped to a circle
 % \documentclass[10pt,a4paper,withhyper,normalphoto]{altacv}
 
-\documentclass[9pt,a4paper,withhyper]{altacv}
+\documentclass[8pt,a4paper,withhyper]{altacv}
 %% AltaCV uses the fontawesome5 and simpleicons packages.
 %% See http://texdoc.net/pkg/fontawesome5 and http://texdoc.net/pkg/simpleicons for full list of symbols.
 
 % Change the page layout if you need to
-\geometry{left=1.25cm,right=1.25cm,top=1.2cm,bottom=1.5cm,columnsep=0.7cm}
+\geometry{left=1.25cm,right=1.25cm,top=1.2cm,bottom=1.2cm,columnsep=0.7cm}
 
 % The paracol package lets you typeset columns of text in parallel
 \usepackage{paracol}
+
+\usepackage{fix-cm}
+\makeatletter
+\newcommand\HUGE{\@setfontsize\Huge{20}{30}}
+\makeatother
+
+\makeatletter
+\newcommand\SemiLarge{\@setfontsize\normalsize{9}{9}}
+\makeatother
+
+\makeatletter
+\newcommand\SemiNormalSize{\@setfontsize\small{7.5}{7.5}}
+\makeatother
 
 % Change the font if you want to, depending on whether
 % you're using pdflatex or xelatex/lualatex
@@ -70,9 +83,9 @@
 \colorlet{sectionHeading}{MostGrey}
 
 % Change some fonts, if necessary
-\renewcommand{\namefont}{\Huge}
+\renewcommand{\namefont}{\HUGE}
 \renewcommand{\taglinefont}{\large} % added by me
-\renewcommand{\personalinfofont}{\normalsize}
+\renewcommand{\personalinfofont}{\SemiLarge}
 \renewcommand{\cvsectionfont}{\large}
 \renewcommand{\cvsubsectionfont}{\large\bfseries}
 
