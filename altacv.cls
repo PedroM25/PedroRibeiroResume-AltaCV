@@ -163,12 +163,12 @@
 \ExplSyntaxOn
 \NewDocumentCommand{\printinfo}{o m m o}{%
   \IfNoValueTF{#4}{%
-    \mbox{\textcolor{accent}%
+    \mbox{\textcolor{icons}%
     {\BeginAccSupp{method=escape,ActualText={\IfNoValueTF{#1}{\detokenize{#2}}{#1}:\space}}\normalfont #2\EndAccSupp{}}%
     ~\utffriendlydetokenize{#3}\hspace{2em}}%
   }{% v1.7.4: fix accsupp ActualText bugs when withhyper enabled
     \iftoggle{withhyper}{%
-      \mbox{\textcolor{accent}%
+      \mbox{\textcolor{icons}%
       {\BeginAccSupp{method=escape,ActualText={\IfNoValueTF{#1}{\detokenize{#2}}{#1}:\space}}\normalfont #2\EndAccSupp{}}%
       ~%
       \BeginAccSupp{method=escape,ActualText={#4}}%
@@ -177,7 +177,7 @@
       \hspace{2em}}%
      }{%
        \ClassWarning{Please specify [withhyper] option to enable hyperlinks. Printing out full hyperlink prefix #1 for now.}%
-      \mbox{\textcolor{accent}
+      \mbox{\textcolor{icons}
       {\BeginAccSupp{method=escape,ActualText={\IfNoValueTF{#1}{\detokenize{#2}}{#1}:\space}}\normalfont #2\EndAccSupp{}}%
       ~{\utffriendlydetokenize{#4}}\hspace{2em}}%
     }%
@@ -290,7 +290,7 @@
     \begin{minipage}{\dimexpr\linewidth-\altacv@photos@width}%
     \raggedright%
     {\namefont\color{name}\MakeUppercase{\@name}\par}
-    \medskip
+    \smallskip
     {\taglinefont\color{tagline}\@tagline\par}
     \medskip
     {\personalinfofont\@personalinfo\par}
@@ -305,6 +305,13 @@
   \nointerlineskip\bigskip%  %% bugfix in v1.6.2
   \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
   {\color{heading}\cvsectionfont\MakeUppercase{#2}}\\[-1ex]%
+  {\color{headingrule}\rule{\linewidth}{2pt}\par}\medskip
+}
+
+\newcommand{\cvCustomSection}[2][]{%
+  \nointerlineskip\bigskip%  %% bugfix in v1.6.2
+  \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
+  {\color{sectionHeading}\cvsectionfont\MakeUppercase{#2}}\\[-1.2ex]%
   {\color{headingrule}\rule{\linewidth}{2pt}\par}\medskip
 }
 
@@ -334,6 +341,47 @@
   \medskip\normalsize
 }
 
+% Pedro Ribeiro addition
+\newcommand{\cvCustomEvent}[4]{%
+  {\large\color{heading}#1\par}
+  \smallskip\normalsize
+  \ifstrequal{#2}{}{}{
+  {\color{accent}#2}\par
+  \smallskip}
+  \ifstrequal{#3}{}{}{%
+    {\color{NormalGrey}\small\makebox[0.5\linewidth][l]%
+      {\BeginAccSupp{method=pdfstringdef,ActualText={\datename:}}\cvDateMarker\EndAccSupp{}%
+      ~#3}%
+    }}%
+  \ifstrequal{#4}{}{}{%
+    {\color{MoreGrey}\small\makebox[0.5\linewidth][l]%
+      {\BeginAccSupp{method=pdfstringdef,ActualText={\locationname:}}\cvLocationMarker\EndAccSupp{}%
+        ~#4}%
+    }}\par
+  \medskip\normalsize
+}
+
+% Pedro Ribeiro addition
+\newcommand{\cvExperienceEvent}[4]{%
+  {\large\color{heading}#1\par}
+  \smallskip\normalsize
+  \ifstrequal{#2}{}{}{%
+    {\makebox[0.45\linewidth][l]%
+      {{\color{accent}#2}\par\smallskip}%
+    }}%
+  \ifstrequal{#3}{}{}{%
+    {\color{NormalGrey}\small\makebox[0.32\linewidth][l]%
+      {\BeginAccSupp{method=pdfstringdef,ActualText={\datename:}}\cvDateMarker\EndAccSupp{}%
+      ~#3}%
+    }}%
+  \ifstrequal{#4}{}{}{%
+    {\color{MoreGrey}\small\makebox[0.5\linewidth][l]%
+      {\BeginAccSupp{method=pdfstringdef,ActualText={\locationname:}}\cvLocationMarker\EndAccSupp{}%
+        ~#4}%
+    }}\par
+  \medskip\normalsize
+}
+
 % v1.7: adds accsupp for the icon as well
 \newcommand{\cvachievement}[3]{%
   \begin{tabularx}{\linewidth}{@{}p{2em} @{\hspace{1ex}} >{\raggedright\arraybackslash}X@{}}
@@ -343,8 +391,21 @@
   \smallskip
 }
 
+\newcommand{\cvCustomAchievement}[3]{%
+  \begin{tabularx}
+  {\linewidth}{@{}p{2em} @{\hspace{1ex}} >{\raggedright\arraybackslash}X@{}}
+  \multirow{2}{*}{\Large\color{accent}\BeginAccSupp{method=escape,ActualText={#1: }}#1\EndAccSupp{}} & \large\textcolor{accent}{#2}\vspace{1mm}\\
+  & #3
+  \end{tabularx}%
+  \smallskip
+}
+
 \newcommand{\cvtag}[1]{%
   \tikz[baseline]\node[anchor=base,draw=body!30,rounded corners,inner xsep=1ex,inner ysep =0.75ex,text height=1.5ex,text depth=.25ex]{#1};
+}
+
+\newcommand{\cvCustomTag}[1]{%
+  \tikz[baseline]\node[anchor=base,draw=body!30,rounded corners,inner xsep=1ex,inner ysep =1ex,text height=1.5ex,text depth=.25ex]{#1};
 }
 
 % v1.6: Use accsupp so that the actual numeric value is copied/pasted
