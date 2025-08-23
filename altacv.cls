@@ -311,8 +311,8 @@
 \newcommand{\cvCustomSection}[2][]{%
   \nointerlineskip\bigskip%  %% bugfix in v1.6.2
   \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
-  {\color{sectionHeading}\cvsectionfont\MakeUppercase{#2}}\\[-1.2ex]%
-  {\color{headingrule}\rule{\linewidth}{2pt}\par}\medskip
+  {\color{sectionHeading}\cvsectionfont\MakeUppercase{#2}}\\[-1.4ex]%
+  {\color{headingrule}\rule{\linewidth}{1.5pt}\par}\medskip
 }
 
 \newcommand{\cvsubsection}[1]{%
