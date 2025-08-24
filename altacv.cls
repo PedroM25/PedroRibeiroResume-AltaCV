@@ -392,6 +392,7 @@
   \smallskip
 }
 
+% Pedro Ribeiro addition
 \newcommand{\cvCustomAchievement}[3]{%
   \begin{tabularx}
   {\linewidth}{@{}p{2em} @{\hspace{1ex}} >{\raggedright\arraybackslash}X@{}}
@@ -405,8 +406,9 @@
   \tikz[baseline]\node[anchor=base,draw=body!30,rounded corners,inner xsep=1ex,inner ysep =0.75ex,text height=1.5ex,text depth=.25ex]{#1};
 }
 
+% Pedro Ribeiro addition
 \newcommand{\cvCustomTag}[1]{%
-  \tikz[baseline]\node[anchor=base,draw=body!30,rounded corners,inner xsep=1ex,inner ysep =1ex,text height=1.5ex,text depth=.25ex]{#1};
+  \SemiLarge\tikz[baseline]\node[anchor=base,draw=body!30,rounded corners,inner xsep=1ex,inner ysep =1ex,text height=1.5ex,text depth=.25ex]{#1};
 }
 
 % v1.6: Use accsupp so that the actual numeric value is copied/pasted
